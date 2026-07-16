@@ -37,8 +37,7 @@ mock_state = {
 
 if __name__ == "__main__":
     # Force the Groq API key from the environment
-    os.environ["GROQ_API_KEY"] = "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"
-    
+    os.environ["GROQ_API_KEY"] = ""
     print("Running Lead Score Agent with mock state...")
     try:
         result = lead_score_node(mock_state)

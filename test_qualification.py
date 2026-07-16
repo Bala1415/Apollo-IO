@@ -28,7 +28,7 @@ mock_state = {
 }
 
 if __name__ == "__main__":
-    os.environ["GROQ_API_KEY"] = "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"
+    os.environ["GROQ_API_KEY"] = ""
     
     print("Running Qualification Agent with mock state...")
     try:
