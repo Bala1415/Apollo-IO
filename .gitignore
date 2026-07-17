@@ -10,9 +10,29 @@ ehthumbs.db
 Thumbs.db
 desktop.ini
 
+<<<<<<< Updated upstream
 # =========================
 # IDEs and Editors
 # =========================
+=======
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment files
+.env.local
+.env.*.local
+*.env
+.env
+
+# IDE / Editor folders and files
+.vscode/
+>>>>>>> Stashed changes
 .idea/
 .vscode/
 *.swp
