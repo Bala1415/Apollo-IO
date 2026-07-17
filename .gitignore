@@ -1,55 +1,95 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+# =========================
+# Operating System Files
+# =========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
 
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Environment files
-.env.local
-.env.*.local
-*.env
-
-# IDE / Editor folders and files
-.vscode/
+# =========================
+# IDEs and Editors
+# =========================
 .idea/
+.vscode/
 *.swp
 *.swo
 *~
-.DS_Store
 
-# Logs and databases
+# =========================
+# Environments
+# =========================
+.env
+.env.local
+.env.*.local
+*.env
+.venv
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# =========================
+# Python / Backend
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+.eggs/
+*.egg-info/
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.tox/
+
+# =========================
+# Node.js / Frontend / Extension
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.next/
+out/
+.nuxt/
+dist-ssr/
+*.tsbuildinfo
+
+# =========================
+# Logs and Databases
+# =========================
 *.log
 *.sqlite3
 *.db
 
-# Testing scripts (We added these during testing)
-test_qualification.py
-test_lead_score.py
-test_recommendation.py
-
-# Distribution / packaging
-dist/
-build/
-*.egg-info/
-.eggs/
-
-# Coverage and test reports
-.coverage
-htmlcov/
-.pytest_cache/
-
-# LangGraph / AI specifics (if any local checkpoints are created)
+# =========================
+# AI / LangGraph Specifics
+# =========================
 .langchain/
 checkpoints/
 
-# Any other temp files
+# =========================
+# Miscellaneous / Temp
+# =========================
 tmp/
 temp/
+pipeline_validation_report.json
+
+# =========================
+# Testing scripts (We added these during testing)
+# =========================
+test_qualification.py
+test_lead_score.py
+test_recommendation.py

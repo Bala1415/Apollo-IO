@@ -28,9 +28,11 @@ if config.config_file_name is not None:
 target_metadata = Base.metadata
 
 def get_url():
-    url = os.getenv("DATABASE_URL")
+    from backend.config import get_settings
+    settings = get_settings()
+    url = settings.db.url
     if not url:
-        raise ValueError("DATABASE_URL environment variable is not set in .env")
+        raise ValueError("DATABASE_URL environment variable is not set")
     return url
 
 def run_migrations_offline() -> None:
