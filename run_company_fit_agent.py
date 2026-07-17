@@ -17,10 +17,8 @@ from typing import TypedDict, Dict, Any
 from langgraph.graph import StateGraph, START, END
 from ai.agents.company_fit import company_fit_node
 
-# ---------------------------------------------------------------------------
-# API Key (hardcoded for local testing only)
-# ---------------------------------------------------------------------------
-os.environ["GROQ_API_KEY"] = "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"
+from dotenv import load_dotenv
+load_dotenv()
 
 # ---------------------------------------------------------------------------
 # Logging

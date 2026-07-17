@@ -1,0 +1,104 @@
+{
+  "langchain.com": {
+    "company": {
+      "name": "LangChain",
+      "website": "https://langchain.com",
+      "domain": "langchain.com",
+      "description": "LangChain provides the engineering platform and open source frameworks developers use to build, test, and deploy reliable AI agents.",
+      "founded_year": null,
+      "headquarters": null,
+      "employee_count": null,
+      "funding": null
+    },
+    "business": {
+      "industry": "Software",
+      "sector": "B2B SaaS",
+      "business_model": "SaaS",
+      "revenue_model": null,
+      "pricing_model": null,
+      "target_market": "Enterprise, SMB, Developer",
+      "customer_segment": "Developers, HR Teams, CFOs",
+      "sales_strategy": null
+    },
+    "products": [
+      {
+        "name": "LangSmith",
+        "category": "SaaS",
+        "description": "The Agent Engineering Platform for observing, evaluating, and deploying agents.",
+        "target_users": "Developers"
+      }
+    ],
+    "services": null,
+    "technology": {
+      "cloud": null,
+      "ai_ml": [
+        "LangChain",
+        "LangGraph",
+        "LLM"
+      ],
+      "frontend": [
+        "TypeScript"
+      ],
+      "backend": [
+        "Go",
+        "Python"
+      ],
+      "crm": null,
+      "payments": null,
+      "devops": null,
+      "databases": null
+    },
+    "customers": {
+      "target_customers": [
+        "Enterprise",
+        "SMB",
+        "Developer"
+      ],
+      "customer_segments": [
+        "Developers",
+        "HR Teams",
+        "CFOs"
+      ],
+      "industries_served": [
+        "Software",
+        "Finance",
+        "Logistics"
+      ]
+    },
+    "competitors": null,
+    "growth_signals": {
+      "hiring": null,
+      "funding_raised": null,
+      "new_products": [
+        "LangSmith Engine"
+      ],
+      "expansions": null,
+      "partnerships": [
+        "NVIDIA"
+      ],
+      "acquisitions": null
+    },
+    "recent_news": [
+      {
+        "headline": "LangChain and NVIDIA launch the NemoClaw Deep Agents Blueprint",
+        "summary": "LangChain and NVIDIA announced a new partnership to launch the NemoClaw Deep Agents Blueprint.",
+        "category": "Partnership",
+        "date": "July 8, 2026"
+      }
+    ],
+    "social_links": {
+      "linkedin": "https://www.linkedin.com/company/langchain/",
+      "twitter": "https://twitter.com/LangChain",
+      "github": null,
+      "youtube": "https://www.youtube.com/@LangChain"
+    },
+    "sources": [
+      "https://www.langchain.com//customers",
+      "https://www.langchain.com//platform",
+      "https://langchain.com",
+      "https://www.langchain.com/",
+      "https://www.langchain.com//blog"
+    ],
+    "executive_summary": "LangChain provides an engineering platform and open source frameworks for developers to build, test, and deploy reliable AI agents. The company serves the enterprise, SMB, and developer markets, offering a SaaS-based business model. LangChain's platform, LangSmith, enables developers to observe, evaluate, and deploy agents, with a focus on AI and machine learning. The company has partnered with NVIDIA to launch the NemoClaw Deep Agents Blueprint and has announced new products such as LangSmith Engine. LangChain's technology stack includes AI/ML tools, frontend and backend technologies, and its customer base includes developers and companies in the software, finance, and logistics industries."
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "manifest_version": 3,
+  "name": "AI Browser Intelligence",
+  "version": "0.1.0",
+  "description": "Privacy-first browser intelligence platform. Processes data locally and sends only structured insights.",
+  "author": "AI Browser Intelligence Team",
+
+  "permissions": [
+    "storage",
+    "identity",
+    "tabs",
+    "history",
+    "alarms",
+    "scripting",
+    "notifications"
+  ],
+
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+
+  "background": {
+    "service_worker": "src/background/background.ts",
+    "type": "module"
+  },
+
+  "action": {
+    "default_popup": "src/popup/index.html",
+    "default_title": "AI Browser Intelligence"
+  },
+
+  "options_ui": {
+    "page": "src/options/index.html",
+    "open_in_tab": true
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://*/*", "http://*/*"],
+      "js": ["src/content/content.ts"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+
+
+
+  "commands": {
+    "open-popup": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Open AI Browser Intelligence popup"
+    }
+  },
+
+  "oauth2": {
+    "client_id": "YOUR_GOOGLE_OAUTH_CLIENT_ID.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/userinfo.profile"
+    ]
+  },
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "minimum_chrome_version": "116"
+}

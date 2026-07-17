@@ -40,10 +40,8 @@ class GraphState(TypedDict):
 # Main
 # ---------------------------------------------------------------------------
 def main():
-    if not os.environ.get("GROQ_API_KEY"):
-        print("WARNING: GROQ_API_KEY not set.")
-        print("Get a free key at: https://console.groq.com/keys")
-        print("Set with: $env:GROQ_API_KEY='your-key'\n")
+    from dotenv import load_dotenv
+    load_dotenv()
 
     # --- Build graph ---
     workflow = StateGraph(GraphState)

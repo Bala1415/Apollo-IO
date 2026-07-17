@@ -33,22 +33,21 @@ REQUEST_HEADERS = {
     "Accept-Language": "en-US,en;q=0.5",
 }
 
-# Priority page slugs to discover from the homepage
+# Priority page slugs to discover from the homepage (ordered by signal value)
 TARGET_PAGE_SLUGS = [
-    "about", "about-us", "company",
     "products", "product",
-    "services", "service",
     "solutions", "solution",
-    "customers", "case-studies", "clients",
     "pricing", "plans",
+    "about", "about-us", "company",
+    "customers", "case-studies", "clients",
+    "platform", "features",
     "careers", "jobs", "hiring",
     "blog", "news", "press",
     "contact", "contact-us",
-    "platform", "features",
 ]
 
-MAX_PAGES = 8
-PAGE_CHAR_LIMIT = 2500
+MAX_PAGES = 4
+PAGE_CHAR_LIMIT = 1200
 
 # ---------------------------------------------------------------------------
 # Technology detection dictionary

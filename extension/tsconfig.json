@@ -1,0 +1,17 @@
+{
+  "extends": "../../packages/config/tsconfig/extension.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "noEmit": true,
+    "tsBuildInfoFile": "./dist/.tsbuildinfo",
+    "resolveJsonModule": true,
+    "types": ["chrome", "vite/client"]
+  },
+  "include": ["src", "src/**/*.json"],
+  "exclude": ["node_modules", "dist"]
+}

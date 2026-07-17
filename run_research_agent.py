@@ -12,12 +12,8 @@ class GraphState(TypedDict):
     research: Dict[str, Any]
 
 def main():
-    # Make sure you have your API key set!
-    if not os.environ.get("GROQ_API_KEY"):
-        print("WARNING: GROQ_API_KEY environment variable is not set.")
-        print("The agent will likely fail when attempting to call the LLM.")
-        print("Get a free key at: https://console.groq.com/keys")
-        print("Set it using: $env:GROQ_API_KEY='your-key' (Windows PowerShell)\n")
+    from dotenv import load_dotenv
+    load_dotenv()
 
     # 2. Create the graph
     workflow = StateGraph(GraphState)
