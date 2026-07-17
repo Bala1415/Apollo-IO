@@ -7,10 +7,15 @@ class Base(DeclarativeBase):
     pass
 
 class TimestampMixin:
-    """Mixin to add created_at and updated_at columns to models."""
+    """Mixin to add created_at, updated_at, and soft delete columns to models."""
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
     )
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
     )
+    deleted_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    created_by: Mapped[str | None] = mapped_column(nullable=True)
+    updated_by: Mapped[str | None] = mapped_column(nullable=True)

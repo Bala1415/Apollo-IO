@@ -1,30 +1,14 @@
-import os
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from typing import Generator
+import logging
+import warnings
+from backend.database.session import engine, SessionLocal, get_db
 
-# Load database URL from environment variable, fallback to localhost for development
-DATABASE_URL = os.getenv(
-    "DATABASE_URL", 
-    "postgresql://postgres:postgres@localhost:5432/apollo_db"
+logger = logging.getLogger(__name__)
+
+# Emit deprecation warning on import
+warnings.warn(
+    "backend.database.connection is deprecated. Use backend.database.session instead.",
+    DeprecationWarning,
+    stacklevel=2
 )
 
-# Initialize SQLAlchemy engine
-engine = create_engine(
-    DATABASE_URL,
-    pool_pre_ping=True,  # Enable connection pool pre-ping
-    echo=False
-)
-
-# Session factory for creating new database sessions
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-def get_db() -> Generator:
-    """
-    Dependency to yield database sessions for FastAPI endpoints.
-    """
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+__all__ = ["engine", "SessionLocal", "get_db"]
