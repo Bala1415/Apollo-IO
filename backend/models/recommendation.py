@@ -1,7 +1,7 @@
 import uuid
 from typing import Optional, TYPE_CHECKING
 from sqlalchemy import ForeignKey, String, Text
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.types import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from backend.database.base import Base, TimestampMixin

@@ -1,15 +1,7 @@
-"""
-Uvicorn Server Launcher.
-"""
 import uvicorn
-from backend.config import get_settings
+from backend.core.factory import create_app
+
+app = create_app()
 
 if __name__ == "__main__":
-    settings = get_settings()
-    uvicorn.run(
-        "backend.app:app",
-        host=settings.app.host,
-        port=settings.app.port,
-        reload=settings.app.debug,
-        log_level="info"
-    )
+    uvicorn.run("backend.main:app", host="0.0.0.0", port=8000, reload=True)

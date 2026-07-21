@@ -1,7 +1,7 @@
 import uuid
 from typing import Optional, Any, TYPE_CHECKING
 from sqlalchemy import String
-from sqlalchemy.dialects.postgresql import UUID, JSONB
+from sqlalchemy.types import UUID, JSON
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from backend.database.base import Base, TimestampMixin
@@ -23,8 +23,8 @@ class RawLead(Base, TimestampMixin):
     )
     email: Mapped[str] = mapped_column(String(255), index=True, nullable=False)
     company_domain: Mapped[str] = mapped_column(String(255), index=True, nullable=False)
-    browser_history: Mapped[Optional[dict[str, Any]]] = mapped_column(JSONB)
-    interest_summary: Mapped[Optional[dict[str, Any]]] = mapped_column(JSONB)
+    browser_history: Mapped[Optional[dict[str, Any]]] = mapped_column(JSON)
+    interest_summary: Mapped[Optional[dict[str, Any]]] = mapped_column(JSON)
     status: Mapped[Optional[str]] = mapped_column(String, default="new")
 
     # Relationships

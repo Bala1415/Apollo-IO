@@ -2,7 +2,6 @@ import os
 import logging
 from typing import Any, Dict
 from langchain_openai import ChatOpenAI
-from langchain_groq import ChatGroq
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
 logger = logging.getLogger(__name__)
@@ -11,24 +10,18 @@ class LLMService:
     def __init__(self, temperature: float = 0):
         self.temperature = temperature
         
-        # Try OpenRouter first, then fallback to Groq
-        if os.environ.get("OPENROUTER_API_KEY"):
-            self.model = "nvidia/nemotron-3-ultra-550b-a55b:free"
-            logger.info(f"Initializing LLMService with OpenRouter ({self.model})")
-            self._client = ChatOpenAI(
-                api_key=os.environ.get("OPENROUTER_API_KEY"),
-                base_url="https://openrouter.ai/api/v1",
-                model=self.model,
-                temperature=self.temperature
-            )
-        else:
-            self.model = "llama-3.3-70b-versatile"
-            logger.info("Initializing LLMService with Groq (llama-3.3-70b-versatile)")
-            self._client = ChatGroq(
-                api_key=os.environ.get("GROQ_API_KEY"),
-                model=self.model, 
-                temperature=self.temperature
-            )
+        self.model = os.environ.get("LLM_MODEL", "nvidia/nemotron-4-340b-instruct")
+        logger.info(f"Initializing LLMService with OpenRouter ({self.model})")
+        
+        api_key = os.environ.get("OPENAI_API_KEY") or os.environ.get("LLM__OPENAI_API_KEY") or os.environ.get("OPENROUTER_API_KEY")
+        base_url = os.environ.get("OPENAI_API_BASE", "https://openrouter.ai/api/v1")
+        
+        self._client = ChatOpenAI(
+            api_key=api_key,
+            base_url=base_url,
+            model=self.model,
+            temperature=self.temperature
+        )
 
     @retry(
         retry=retry_if_exception_type(Exception),

@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime, timezone
 from sqlalchemy import Column, String, Boolean, DateTime, JSON
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.types import UUID
 from backend.database.base import Base
 
 class User(Base):

@@ -5,7 +5,7 @@ from contextlib import contextmanager
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session, scoped_session
 
-from backend.config import get_settings
+from backend.config.settings import get_settings
 
 logger = logging.getLogger(__name__)
 
@@ -17,13 +17,22 @@ def get_engine():
     Creates and configures the SQLAlchemy engine.
     """
     logger.info(f"Initializing database engine with pool_size={settings.db.pool_size}")
-    return create_engine(
-        settings.db.url,
-        pool_size=settings.db.pool_size,
-        pool_timeout=settings.db.connection_timeout,
-        pool_pre_ping=True,
-        echo=settings.app.debug
-    )
+    connect_args = {}
+    if settings.db.url.startswith("sqlite"):
+        connect_args["check_same_thread"] = False
+        return create_engine(
+            settings.db.url,
+            connect_args=connect_args,
+            echo=settings.app.debug
+        )
+    else:
+        return create_engine(
+            settings.db.url,
+            pool_size=settings.db.pool_size,
+            pool_timeout=settings.db.connection_timeout,
+            pool_pre_ping=True,
+            echo=settings.app.debug
+        )
 
 engine = get_engine()
 
