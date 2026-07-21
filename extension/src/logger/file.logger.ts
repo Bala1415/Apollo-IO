@@ -11,20 +11,20 @@ export class FileLogger implements Logger {
     this.namespace = namespace
   }
 
-  debug(_message: string, _context?: Record<string, unknown>): void {
-    // Future: persist to IndexedDB log store
+  debug(message: string, context?: Record<string, unknown>): void {
+    console.debug(`[${this.namespace}] ${message}`, context || '')
   }
 
-  info(_message: string, _context?: Record<string, unknown>): void {
-    // Future: persist to IndexedDB log store
+  info(message: string, context?: Record<string, unknown>): void {
+    console.info(`[${this.namespace}] ${message}`, context || '')
   }
 
-  warn(_message: string, _context?: Record<string, unknown>): void {
-    // Future: persist to IndexedDB log store
+  warn(message: string, context?: Record<string, unknown>): void {
+    console.warn(`[${this.namespace}] ${message}`, context || '')
   }
 
-  error(_message: string, _error?: unknown, _context?: Record<string, unknown>): void {
-    // Future: persist to IndexedDB log store with error serialization
+  error(message: string, error?: unknown, context?: Record<string, unknown>): void {
+    console.error(`[${this.namespace}] ${message}`, error || '', context || '')
   }
 
   getNamespace(): string {

@@ -43,6 +43,8 @@ async def analyze_lead(
         payload={
             "email": payload.email,
             "company_domain": payload.company_domain,
+            "browser_data": payload.browser_data,
+            "interest_profile": payload.interest_profile,
             "user_id": str(current_user.id) if current_user else None
         },
         metadata={"trace_id": correlation_id}

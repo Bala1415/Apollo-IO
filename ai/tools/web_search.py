@@ -18,13 +18,20 @@ def search_web(query: str, max_results: int = 3) -> List[Dict[str, str]]:
     (e.g., TavilySearchResults from langchain_community).
     """
     logger.info(f"Searching web for: {query}")
-    # TODO: Implement actual search API call here. 
-    # Example with Tavily (if installed):
-    # from langchain_community.tools.tavily_search import TavilySearchResults
-    # tool = TavilySearchResults(max_results=max_results)
-    # return tool.invoke({"query": query})
-    
-    return [{"url": f"https://example.com/search?q={query}", "content": f"Mock search result for {query}"}]
+    try:
+        from langchain_community.tools.ddg_search import DuckDuckGoSearchResults
+        tool = DuckDuckGoSearchResults(max_results=max_results)
+        # The DuckDuckGo tool usually returns a string, so we will parse it.
+        # Alternatively, we can use DuckDuckGoSearchRun for raw output.
+        # Here we just use the tool and return the output inside our standard format.
+        result = tool.invoke({"query": query})
+        return [{"url": "https://duckduckgo.com", "content": str(result)}]
+    except ImportError:
+        logger.warning("langchain_community or duckduckgo-search is not installed. Returning mock results.")
+        return [{"url": f"https://example.com/search?q={query}", "content": f"Mock search result for {query}"}]
+    except Exception as e:
+        logger.error(f"Search failed: {e}")
+        return [{"url": f"https://example.com/search?q={query}", "content": f"Error: {e}"}]
 
 def search_company_news(company_domain: str, max_results: int = 3) -> List[Dict[str, str]]:
     """

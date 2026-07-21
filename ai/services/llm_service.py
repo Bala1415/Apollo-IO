@@ -13,8 +13,8 @@ class LLMService:
         
         # Try OpenRouter first, then fallback to Groq
         if os.environ.get("OPENROUTER_API_KEY"):
-            self.model = "meta-llama/llama-3.3-70b-instruct:free"
-            logger.info("Initializing LLMService with OpenRouter (llama-3.3-70b-instruct:free)")
+            self.model = "nvidia/nemotron-3-ultra-550b-a55b:free"
+            logger.info(f"Initializing LLMService with OpenRouter ({self.model})")
             self._client = ChatOpenAI(
                 api_key=os.environ.get("OPENROUTER_API_KEY"),
                 base_url="https://openrouter.ai/api/v1",

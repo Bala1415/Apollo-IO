@@ -1,8 +1,8 @@
 from typing import Optional, Any
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
-from models.lead_qualification import LeadQualification
-from repositories.base_repository import BaseRepository
+from backend.models.lead_qualification import LeadQualification
+from backend.repositories.base_repository import BaseRepository
 
 class LeadQualificationRepository(BaseRepository[LeadQualification]):
     def __init__(self):

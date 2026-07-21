@@ -1,8 +1,8 @@
 from typing import Optional, Any
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
-from models.raw_lead import RawLead
-from repositories.base_repository import BaseRepository
+from backend.models.raw_lead import RawLead
+from backend.repositories.base_repository import BaseRepository
 
 class RawLeadRepository(BaseRepository[RawLead]):
     def __init__(self):

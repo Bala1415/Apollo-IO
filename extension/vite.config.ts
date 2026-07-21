@@ -18,14 +18,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
-      '@ai-browser-intelligence/shared-types': resolve(
-        __dirname,
-        '../../packages/shared-types/src/index.ts'
-      ),
-      '@ai-browser-intelligence/taxonomy': resolve(
-        __dirname,
-        '../../packages/taxonomy/src/index.ts'
-      ),
+      '@ai-browser-intelligence/shared-types': resolve(__dirname, 'src/shared/types.ts'),
+      '@ai-browser-intelligence/taxonomy': resolve(__dirname, 'src/shared/taxonomy.ts'),
     },
   },
   build: {

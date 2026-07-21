@@ -1,8 +1,8 @@
 from typing import Optional, Any
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
-from models.lead_score import LeadScore
-from repositories.base_repository import BaseRepository
+from backend.models.lead_score import LeadScore
+from backend.repositories.base_repository import BaseRepository
 
 class LeadScoreRepository(BaseRepository[LeadScore]):
     def __init__(self):

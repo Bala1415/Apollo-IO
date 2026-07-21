@@ -1,8 +1,8 @@
 from typing import Optional, Any
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
-from models.company_profile import CompanyProfile
-from repositories.base_repository import BaseRepository
+from backend.models.company_profile import CompanyProfile
+from backend.repositories.base_repository import BaseRepository
 
 class CompanyProfileRepository(BaseRepository[CompanyProfile]):
     def __init__(self):

@@ -4,7 +4,7 @@ from sqlalchemy import ForeignKey, String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from database.base import Base, TimestampMixin
+from backend.database.base import Base, TimestampMixin
 
 if TYPE_CHECKING:
     from .raw_lead import RawLead

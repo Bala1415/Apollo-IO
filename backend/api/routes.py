@@ -7,6 +7,7 @@ from backend.api.report_routes import router as report_router
 from backend.api.notification_routes import router as notification_router
 from backend.api.auth_routes import router as auth_router
 from backend.api.dashboard_routes import router as dashboard_router
+from backend.api.extension_routes import router as extension_router
 
 # Master Router Prefix
 api_router = APIRouter(prefix="/api/v1")
@@ -24,3 +25,4 @@ api_router.include_router(company_router)
 api_router.include_router(report_router)
 api_router.include_router(notification_router)
 api_router.include_router(dashboard_router)
+api_router.include_router(extension_router)

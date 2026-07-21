@@ -5,6 +5,9 @@ import uuid
 class LeadAnalyzeRequest(BaseModel):
     """Schema for requesting a lead analysis/qualification."""
     email: EmailStr = Field(..., description="The lead's email address")
+    company_domain: str = Field(..., description="The lead's company domain")
+    browser_data: Dict[str, Any] = Field(default_factory=dict, description="Browsing behavior data")
+    interest_profile: Dict[str, Any] = Field(default_factory=dict, description="Inferred interest profile")
     first_name: Optional[str] = Field(None, description="The lead's first name")
     last_name: Optional[str] = Field(None, description="The lead's last name")
     company_name: Optional[str] = Field(None, description="The lead's company name")

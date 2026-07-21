@@ -1,8 +1,8 @@
 from typing import Optional, Any
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
-from models.recommendation import Recommendation
-from repositories.base_repository import BaseRepository
+from backend.models.recommendation import Recommendation
+from backend.repositories.base_repository import BaseRepository
 
 class RecommendationRepository(BaseRepository[Recommendation]):
     def __init__(self):

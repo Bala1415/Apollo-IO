@@ -1,9 +1,16 @@
 {
-  "extends": "../../packages/config/tsconfig/extension.json",
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@ai-browser-intelligence/shared-types": ["src/shared/types.ts"],
+      "@ai-browser-intelligence/taxonomy": ["src/shared/taxonomy.ts"]
     },
     "outDir": "./dist",
     "rootDir": "./src",

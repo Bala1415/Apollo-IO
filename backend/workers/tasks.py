@@ -14,6 +14,8 @@ async def analyze_lead_task(job: Job) -> None:
     """
     lead_email = job.payload.get("email")
     company_domain = job.payload.get("company_domain")
+    browser_data = job.payload.get("browser_data", {})
+    interest_profile = job.payload.get("interest_profile", {})
     user_id = job.payload.get("user_id")
 
     logger.info(f"Task {job.task_name} (Job {job.id}) started for lead: {lead_email}")
@@ -25,7 +27,12 @@ async def analyze_lead_task(job: Job) -> None:
     try:
         # Simulate processing delay or actual graph invocation
         # In actual deployment, this imports and runs the LangGraph supervisor:
-        # result = await run_pipeline(email=lead_email, domain=company_domain)
+        # result = await run_pipeline(
+        #     email=lead_email, 
+        #     domain=company_domain,
+        #     browser_data=browser_data,
+        #     interest_profile=interest_profile
+        # )
         
         job.progress = 50.0
         job.current_stage = "AI Graph Execution"

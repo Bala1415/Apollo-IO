@@ -1,8 +1,8 @@
 from typing import Optional, Any
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
-from models.industry_classification import IndustryClassification
-from repositories.base_repository import BaseRepository
+from backend.models.industry_classification import IndustryClassification
+from backend.repositories.base_repository import BaseRepository
 
 class IndustryClassificationRepository(BaseRepository[IndustryClassification]):
     def __init__(self):

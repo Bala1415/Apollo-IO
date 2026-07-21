@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from typing import Any, Optional
-from repositories.base_repo import BaseRepository
-from models.leads import RawLead
+from backend.repositories.base_repo import BaseRepository
+from backend.models.leads import RawLead
 
 class LeadRepository(BaseRepository[RawLead]):
     """

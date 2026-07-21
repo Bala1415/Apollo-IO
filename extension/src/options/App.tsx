@@ -116,7 +116,7 @@ const SECTION_CONFIG: Record<SettingsSection, { title: string; description: stri
 export const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<SettingsSection>('authentication')
   const config = SECTION_CONFIG[activeSection]
-  const { isAuthenticated, user, signIn, signOut } = useAuth()
+  const { isAuthenticated, user, signIn, signOut, isLoading, error } = useAuth()
   const { allRequiredGranted, requestAll } = usePermissions()
 
   const handleResetStorage = async () => {
@@ -132,15 +132,24 @@ export const App: React.FC = () => {
         return (
           <div style={styles.section}>
             <div style={styles.sectionTitle}>Google Account</div>
+            {error && (
+              <div style={{ padding: '12px', background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', borderRadius: '6px', marginBottom: '16px', fontSize: '13px' }}>
+                {error.message}
+              </div>
+            )}
             {isAuthenticated ? (
               <div>
                 <p style={{ color: 'var(--color-text-secondary)', marginBottom: '16px' }}>Signed in as {user?.email}</p>
-                <button style={styles.button} onClick={() => void signOut()}>Sign Out</button>
+                <button style={styles.button} onClick={() => void signOut()} disabled={isLoading}>
+                  {isLoading ? 'Signing out...' : 'Sign Out'}
+                </button>
               </div>
             ) : (
               <div>
                 <p style={{ color: 'var(--color-text-secondary)', marginBottom: '16px' }}>You are currently offline.</p>
-                <button style={styles.button} onClick={() => void signIn()}>Sign in with Google</button>
+                <button style={styles.button} onClick={() => void signIn()} disabled={isLoading}>
+                  {isLoading ? 'Connecting...' : 'Sign in with Google'}
+                </button>
               </div>
             )}
           </div>

@@ -1,3 +1,7 @@
+import typing
+import sqlalchemy.util.typing
+sqlalchemy.util.typing.make_union_type = lambda *types: typing.Union[types]
+
 from .raw_lead import RawLead
 from .company_research import CompanyResearch
 from .company_profile import CompanyProfile

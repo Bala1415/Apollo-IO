@@ -2,7 +2,7 @@ from typing import TypeVar, Generic, Type, Optional, List, Any, Dict, Tuple
 from sqlalchemy.orm import Session
 from sqlalchemy import select, update as sa_update, exists as sa_exists, func
 from datetime import datetime, timezone
-from database.base import Base
+from backend.database.base import Base
 
 ModelType = TypeVar("ModelType", bound=Base)
 

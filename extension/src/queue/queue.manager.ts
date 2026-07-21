@@ -74,15 +74,31 @@ export class QueueManager {
 
     logger.info('Processing queue batch', { count: pending.length })
 
-    // PHASE 3: No backend. Mock successful upload and remove from queue
+    // PHASE 3: Upload to backend
     for (const item of pending) {
       await this.updateStatus(item.id, 'processing')
       
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 100))
-      
-      logger.info('Mock upload successful for payload', { id: item.id })
-      await this.remove(item.id)
+      try {
+        const response = await fetch('http://localhost:8000/api/v1/extension/ingest', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(item.payload)
+        })
+
+        if (!response.ok) {
+          throw new Error(`Upload failed with status ${response.status}`)
+        }
+        
+        logger.info('Upload successful for payload', { id: item.id })
+        await this.remove(item.id)
+      } catch (error) {
+        logger.error('Failed to upload payload, will retry later', error)
+        // Set back to pending or failed if max attempts reached.
+        // For simplicity, we just leave it pending to retry next cycle.
+        await this.updateStatus(item.id, 'pending')
+      }
     }
   }
 
