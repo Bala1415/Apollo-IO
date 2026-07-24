@@ -21,6 +21,31 @@ export interface LeadListResponse {
   items: LeadSummary[];
 }
 
+export interface CompanyProfileData {
+  description?: string;
+  company_size?: string;
+  tech_stack?: string[];
+  locations?: string[];
+}
+
+export interface IndustryClassificationData {
+  industry?: string;
+  vertical?: string;
+  tags?: string[];
+}
+
+export interface RecommendationData {
+  priority?: 'High' | 'Medium' | 'Low';
+  reason?: string;
+  next_action?: string;
+}
+
+export interface CompanyResearchData {
+  recent_news?: string[];
+  sentiment_score?: number;
+  key_executives?: string[];
+}
+
 export interface LeadDetails {
   lead_id: string;
   email: string;
@@ -31,9 +56,10 @@ export interface LeadDetails {
   confidence: number | null;
   qualification_status: boolean | null;
   qualification_reason: string | null;
-  company_profile: any;
-  industry_classification: any;
-  recommendation: any;
+  company_profile: CompanyProfileData | null;
+  industry_classification: IndustryClassificationData | null;
+  recommendation: RecommendationData | null;
+  company_research: CompanyResearchData | null;
 }
 
 export interface StatisticsResponse {

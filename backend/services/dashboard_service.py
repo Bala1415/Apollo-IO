@@ -119,13 +119,16 @@ class DashboardService:
 
     def get_lead_details(self, db: Session, lead_id: uuid.UUID) -> Optional[LeadDetailsResponse]:
         """Fetches comprehensive details for a single lead without N+1."""
+        from backend.models.company_research import CompanyResearch
+        
         lead = db.query(RawLead)\
             .options(
                 joinedload(RawLead.lead_score),
                 joinedload(RawLead.lead_qualification),
                 joinedload(RawLead.company_profile),
                 joinedload(RawLead.industry_classification),
-                joinedload(RawLead.recommendation)
+                joinedload(RawLead.recommendation),
+                joinedload(RawLead.company_research)
             )\
             .filter(RawLead.lead_id == lead_id).first()
             
@@ -142,10 +145,26 @@ class DashboardService:
             confidence=float(lead.lead_score.confidence) if lead.lead_score and lead.lead_score.confidence else None,
             qualification_status=lead.lead_qualification.qualified if lead.lead_qualification else None,
             qualification_reason=lead.lead_qualification.reason if lead.lead_qualification else None,
-            # We map JSONB fields natively
-            company_profile=lead.company_profile.profile_data if lead.company_profile else None,
-            industry_classification=lead.industry_classification.classification_data if lead.industry_classification else None,
-            recommendation=lead.recommendation.recommendation_data if lead.recommendation else None
+            company_profile={
+                "description": lead.company_profile.description,
+                "company_size": lead.company_profile.company_size,
+                "tech_stack": lead.company_profile.tech_stack,
+                "locations": lead.company_profile.locations
+            } if lead.company_profile else None,
+            industry_classification={
+                "industry": lead.industry_classification.industry,
+                "vertical": lead.industry_classification.sector
+            } if lead.industry_classification else None,
+            recommendation={
+                "priority": lead.recommendation.priority,
+                "reason": lead.recommendation.reason,
+                "next_action": lead.recommendation.next_action
+            } if lead.recommendation else None,
+            company_research={
+                "recent_news": lead.company_research.news,
+                "sentiment_score": None,
+                "key_executives": []
+            } if lead.company_research else None
         )
 
     def get_analytics(self, db: Session) -> AnalyticsResponse:

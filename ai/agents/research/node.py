@@ -37,7 +37,18 @@ def research_node(state: Dict[str, Any], config: RunnableConfig = None) -> Dict[
     logger.info("Research Agent (Unified) — Starting pipeline")
 
     company_domain: str = state.get("company_domain", "").strip()
-    if not company_domain:
+    email: str = state.get("email", "").strip()
+    
+    if (not company_domain or company_domain == "unknown.com") and email:
+        username = email.split("@")[0]
+        parts = username.split(".")
+        extracted = parts[-1] if len(parts) > 1 else parts[0]
+        
+        from ai.services.llm_service import intelligently_resolve_domain
+        company_domain = intelligently_resolve_domain(extracted)
+        logger.info(f"Fallback: Using {company_domain} extracted from email as domain")
+
+    if not company_domain or company_domain == "unknown.com":
         return {"research": {}}
 
     # 1. Check Cache

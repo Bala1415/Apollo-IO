@@ -11,8 +11,8 @@ def calculate_company_fit(state: Dict[str, Any]) -> Dict[str, float]:
     icp_rules = state.get("icp_rules", {})
     
     # Extract data safely
-    company_data = research.get("company", {})
-    tech_stack = research.get("technology", {})
+    company_data = research.get("company") or {}
+    tech_stack = research.get("technology") or {}
     
     # Target ICP criteria (default or overridden)
     target_industries = icp_rules.get("target_industries", ["technology", "software", "saas", "developer tools"])

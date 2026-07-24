@@ -1,4 +1,7 @@
 import uvicorn
+from dotenv import load_dotenv
+
+load_dotenv()
 from backend.core.factory import create_app
 
 app = create_app()

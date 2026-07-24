@@ -58,6 +58,7 @@ class LeadDetailsResponse(BaseModel):
     company_profile: Optional[Dict[str, Any]] = None
     industry_classification: Optional[Dict[str, Any]] = None
     recommendation: Optional[Dict[str, Any]] = None
+    company_research: Optional[Dict[str, Any]] = None
     
     class Config:
         from_attributes = True

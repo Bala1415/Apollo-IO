@@ -68,8 +68,10 @@ export class PermissionManager implements IPermissionManager {
 
   async requestPermissions(names: PermissionName[]): Promise<PermissionState> {
     logger.info('Requesting multiple permissions', { names })
-    for (const name of names) {
-      await this.requestPermission(name)
+    try {
+      await chrome.permissions.request({ permissions: names })
+    } catch (err) {
+      logger.error('Permission request failed', err as Error, { names })
     }
     return this.getPermissionState()
   }

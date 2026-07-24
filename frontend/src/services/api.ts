@@ -9,7 +9,7 @@ import {
 
 // Create axios instance pointing to the backend API
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: 'http://localhost:8000/api/v1',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -51,6 +51,17 @@ export const dashboardService = {
   
   searchLeads: async (q: string, page = 1, size = 20): Promise<LeadListResponse> => {
     const { data } = await apiClient.get('/dashboard/search', { params: { q, page, size } });
+    return data;
+  }
+};
+
+export const leadsService = {
+  updateLead: async (leadId: string, updateData: { company_domain?: string; email?: string }) => {
+    const { data } = await apiClient.put(`/leads/${leadId}`, updateData);
+    return data;
+  },
+  analyzeLead: async (leadId: string) => {
+    const { data } = await apiClient.post(`/leads/${leadId}/analyze`);
     return data;
   }
 };

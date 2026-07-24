@@ -76,7 +76,11 @@ chrome.runtime.onMessage.addListener((message: unknown, sender: chrome.runtime.M
 
     case MESSAGE_TYPES.AUTH_LOGIN:
       authService.signIn()
-        .then((res) => sendResponse({ success: true, data: res }))
+        .then((res) => {
+          sendResponse({ success: true, data: res })
+          // Force an immediate sync after login so the user doesn't wait 30 minutes
+          void pipeline.runPipeline()
+        })
         .catch((err) => sendResponse({ success: false, error: String(err) }))
       return true
 

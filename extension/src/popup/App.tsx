@@ -218,7 +218,7 @@ export const App: React.FC = () => {
             <div style={{ ...styles.row, marginTop: '8px' }}>
               <span style={styles.rowLabel}>Top Categories</span>
               <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
-                {interests.slice(0, 2).map(i => i.categoryId.replace('cat_', '')).join(', ') || 'None'}
+                {interests.slice(0, 2).map(i => (i?.categoryId || i?.name || '').replace('cat_', '')).filter(Boolean).join(', ') || 'None'}
               </span>
             </div>
             <div style={{ ...styles.row, marginTop: '8px' }}>

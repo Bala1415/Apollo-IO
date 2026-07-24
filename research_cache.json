@@ -100,5 +100,78 @@
       "https://www.langchain.com//blog"
     ],
     "executive_summary": "LangChain provides an engineering platform and open source frameworks for developers to build, test, and deploy reliable AI agents. The company serves the enterprise, SMB, and developer markets, offering a SaaS-based business model. LangChain's platform, LangSmith, enables developers to observe, evaluate, and deploy agents, with a focus on AI and machine learning. The company has partnered with NVIDIA to launch the NemoClaw Deep Agents Blueprint and has announced new products such as LangSmith Engine. LangChain's technology stack includes AI/ML tools, frontend and backend technologies, and its customer base includes developers and companies in the software, finance, and logistics industries."
+  },
+  "unknown.com": {
+    "company": null,
+    "business": null,
+    "products": [],
+    "services": [],
+    "technology": null,
+    "customers": null,
+    "competitors": [],
+    "growth_signals": null,
+    "recent_news": [],
+    "social_links": null,
+    "sources": [
+      "https://unknown.com/"
+    ],
+    "executive_summary": null
+  },
+  "altroneindia.vercel.app": {
+    "company": {
+      "name": "AltroneIndia",
+      "website": "altroneindia.vercel.app",
+      "domain": "altroneindia.vercel.app",
+      "description": "Web site created using create-react-app",
+      "founded_year": null,
+      "headquarters": null,
+      "employee_count": null,
+      "funding": null
+    },
+    "business": {
+      "industry": null,
+      "sector": null,
+      "business_model": null,
+      "revenue_model": null,
+      "pricing_model": null,
+      "target_market": null,
+      "customer_segment": null,
+      "sales_strategy": null
+    },
+    "products": null,
+    "services": null,
+    "technology": {
+      "cloud": null,
+      "ai_ml": null,
+      "frontend": null,
+      "backend": null,
+      "crm": null,
+      "payments": null,
+      "devops": null,
+      "databases": null
+    },
+    "customers": {
+      "target_customers": null,
+      "customer_segments": null,
+      "industries_served": null
+    },
+    "competitors": null,
+    "growth_signals": {
+      "hiring": null,
+      "funding_raised": null,
+      "new_products": null,
+      "expansions": null,
+      "partnerships": null,
+      "acquisitions": null
+    },
+    "recent_news": null,
+    "social_links": {
+      "linkedin": null,
+      "twitter": null,
+      "github": null,
+      "youtube": null
+    },
+    "sources": null,
+    "executive_summary": "AltroneIndia is a technology solutions company that serves the enterprise market with its products and services. It offers its solutions through a subscription-based model. The company positions itself as a provider of technology solutions to its target customers."
   }
 }

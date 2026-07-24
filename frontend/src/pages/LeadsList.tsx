@@ -34,7 +34,7 @@ const LeadsList = () => {
         </div>
       </div>
 
-      <div className="card glass leads-table-wrapper">
+      <div className="card glass leads-table-wrapper mt-6">
         {loading && <div className="loading-overlay">Loading...</div>}
         
         <table className="leads-table interactive">
